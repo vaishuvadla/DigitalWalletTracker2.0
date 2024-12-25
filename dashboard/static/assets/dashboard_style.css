@@ -1,0 +1,70 @@
+/* Global Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #f3e7e9 0%, #e3eeff 100%); /* Light gradient background */
+    color: #333; /* Darker text for contrast */
+    padding: 20px;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    background-color: #fff; /* White background for contrast */
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); /* Softer shadow for depth */
+}
+
+/* Typography */
+h2 {
+    text-align: center;
+    color: #333; /* Dark text */
+    margin-bottom: 20px;
+    font-size: 1.8em;
+    font-weight: 600;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+}
+
+/* Animations and Transitions */
+.container, h2 {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.5s ease forwards;
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Media Queries for Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column; /* Stack elements vertically on small screens */
+        align-items: center; /* Center align */
+    }
+
+    h2 {
+        font-size: 1.5em;
+    }
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+h3 {
+    color: #333; /* Darker text */
+    margin-top: 20px;
+}
+
+.container {
+    margin-bottom: 20px;
+}
