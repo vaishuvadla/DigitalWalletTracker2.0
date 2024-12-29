@@ -1,68 +1,290 @@
+/* Modern color variables */
+:root {
+    --primary-color: #4361ee;
+    --secondary-color: #3f37c9;
+    --success-color: #4cc9f0;
+    --warning-color: #f72585;
+    --background-color: #f8f9fd;
+    --card-background: #ffffff;
+    --text-primary: #2b2d42;
+    --text-secondary: #6c757d;
+    --border-radius: 12px;
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px rgba(67, 97, 238, 0.1);
+    --shadow-lg: 0 10px 15px rgba(67, 97, 238, 0.1);
+    --accent-color: #f4a261;
+    --light-accent-color: #fcbf49;
+    --dark-accent-color: #2d3748;
+    /* Add these to your existing variables */
+    --gradient-blue: linear-gradient(135deg, #4361ee 0%, #3a0ca3 100%);
+    --gradient-purple: linear-gradient(135deg, #7209b7 0%, #3a0ca3 100%);
+    --gradient-success: linear-gradient(135deg, #4cc9f0 0%, #4361ee 100%);
+    --gradient-warning: linear-gradient(135deg, #f72585 0%, #b5179e 100%);
+    --neon-shadow: 0 0 15px rgba(67, 97, 238, 0.3);
+    --card-shine: rgba(255, 255, 255, 0.1);
+}
+
+/* Body styling */
+body {
+    background-color: var(--background-color);
+    font-family: 'Poppins', sans-serif;
+    padding-bottom: 20px;
+    margin: 0;
+    color: var(--text-primary);
+    background: linear-gradient(to bottom, #f8f9fd 0%, #e0e7ff 100%);
+}
+
+/* Dashboard container styling */
 .dashboard-container {
     display: grid;
     grid-template-columns: minmax(350px, 38%) minmax(450px, 62%);
-    gap: 20px;
-    padding: 20px;
+    gap: 30px; 
+    padding: 24px;
     min-height: 100vh;
     overflow-y: auto;
     overflow-x: hidden;
 }
 
-.left-panel {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    min-height: 100%;
+/* Heading */
+.dashboard-heading {
+    text-align: center;
+    padding: 20px;
+    background: linear-gradient(90deg, rgba(54, 162, 235, 0.8), rgba(75, 192, 192, 0.8));
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    border-radius: 10px;
+    margin: 20px 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.right-panel {
+.dashboard-heading h1 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+.dashboard-heading h1 span {
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* Card and Panels */
+.left-panel, .right-panel {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 30px;
     min-height: 100%;
 }
 
 .card {
-    background: white;
-    border-radius: 12px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    padding: 20px;
+    background: var(--card-background);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-md);
+    padding: 24px;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(67, 97, 238, 0.05);
+    background: linear-gradient(145deg, #ffffff, #f0f4f8);
 }
 
-.flow-card {
-    min-height: 350px;
-    min-width: 350px;
-    height: 450px;
-    width: 450px;
+.card:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-2px);
 }
 
-.flow-card .chart-container {
-    height: 200px;
-    margin: auto;
-    width: 200px;
+/* Card headers */
+.card h3 {
+    color: var(--primary-color);
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 2rem;
+    position: relative;
+    padding-bottom: 0.5rem;
 }
 
-#inflow-outflow-chart {
-    max-height: 200px !important;
+.card h3::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 40px;
+    height: 3px;
+    background: var(--accent-color);
+    border-radius: 2px;
 }
 
-.insights-card, .alerts-card {
-    min-height: 200px;
-    height: auto;
+/* Metrics cards */
+.metric-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 24px;
+    margin-top: 10px;
 }
 
-.intervals-card, .flow-card {
-    min-height: 200px;
-    height: auto;
+.metric-card {
+    background: linear-gradient(145deg, #ffffff, #f8f9fd);
+    border-radius: var(--border-radius);
+    padding: 1.25rem;
+    box-shadow: var(--shadow-sm);
+    transition: all 0.3s ease;
 }
 
-/*ransaction*/
-
-.transactions-card {
-    min-height: 400px;
-    height: auto;
+.metric-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
 }
 
+.metric-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.metric-value {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin: 0.5rem 0;
+}
+
+.metric-label {
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+}
+
+/* Alert Cards */
+.alert-metrics {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 10px;
+}
+
+.alert-metric {
+    background: linear-gradient(145deg, #ffffff, #f8f9fd);
+    border-radius: var(--border-radius);
+    padding: 1rem;
+    margin-bottom: 0.75rem;
+    border-left: 4px solid var(--warning-color);
+    transition: all 0.3s ease;
+}
+
+.alert-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.alert-timestamp {
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+}
+
+.alert-message {
+    color: var(--text-primary);
+    font-size: 0.9375rem;
+}
+
+/* Chart Controls */
+.chart-tab {
+    padding: 8px 16px;
+    border: none;
+    border-radius: var(--border-radius);
+    background: var(--light-accent-color);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.chart-tab.active {
+    background: var(--primary-color);
+    color: white;
+    box-shadow: 0 2px 4px rgba(67, 97, 238, 0.2);
+}
+
+.chart-tab:hover:not(.active) {
+    background: var(--secondary-color);
+    color: white;
+}
+
+/* Scrollbars */
+.scrollable-chart-wrapper::-webkit-scrollbar {
+    height: 8px;
+}
+
+.scrollable-chart-wrapper::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+.scrollable-chart-wrapper::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 4px;
+    opacity: 0.8;
+}
+
+.scrollable-chart-wrapper::-webkit-scrollbar-thumb:hover {
+    opacity: 1;
+    background: var(--secondary-color);
+}
+
+/* Year Tabs */
+.year-tabs {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+.year-tab {
+    padding: 8px 16px;
+    border: none;
+    border-radius: var(--border-radius);
+    background: #f0f0f0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.year-tab.active {
+    background: var(--primary-color);
+    color: white;
+    box-shadow: 0 2px 4px rgba(67, 97, 238, 0.2);
+}
+
+.year-tab:hover:not(.active) {
+    background: var(--secondary-color);
+    color: white;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .dashboard-container {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+    .left-panel, .right-panel {
+        gap: 24px;
+    }
+    .card {
+        padding: 20px;
+    }
+    
+    .metric-cards {
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    }
+}
+
+/* Chart Containers */
+.chart-container {
+    background: linear-gradient(145deg, #ffffff, #f8f9fd);
+    border-radius: var(--border-radius);
+    padding: 1rem;
+    position: relative;
+}
 
 /* Base scrollable chart style */
 .scrollable-chart-wrapper {
@@ -77,21 +299,31 @@
 }
 
 .intervals-card .chart-container {
-    min-width: 600px; /* Minimum width before scrolling starts */
+    min-width: 600px;
     height: 100%;
+    background: linear-gradient(145deg, #ffffff, #f8f9fd);
+    border-radius: var(--border-radius);
+    padding: 1rem;
 }
 
 /* Transaction Chart scrollable container */
 .transactions-card .scrollable-chart-wrapper {
     min-height: 300px;
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    margin-top: 20px;
 }
 
 .transactions-card .chart-container {
-    min-width: 800px; /* Minimum width before scrolling starts */
-    height: 100%;
+    min-width: 1000px;
+    height: 300px;
+    background: linear-gradient(145deg, #ffffff, #f8f9fd);
+    border-radius: var(--border-radius);
+    padding: 1rem;
 }
 
-/* Styling the scrollbars for both containers */
+/* Updated scrollbar styles to match new design */
 .scrollable-chart-wrapper::-webkit-scrollbar {
     height: 8px;
 }
@@ -102,135 +334,289 @@
 }
 
 .scrollable-chart-wrapper::-webkit-scrollbar-thumb {
-    background: #888;
+    background: var(--primary-color);
     border-radius: 4px;
+    opacity: 0.8;
 }
 
 .scrollable-chart-wrapper::-webkit-scrollbar-thumb:hover {
-    background: #555;
+    opacity: 1;
+    background: var(--secondary-color);
 }
-/*============================*/
+
+/* Ensure proper chart container styling */
+.chart-container {
+    position: relative;
+    min-height: 200px;
+    width: 100%;
+    background: linear-gradient(145deg, #ffffff, #f8f9fd);
+    border-radius: var(--border-radius);
+    padding: 1rem;
+}
+
+/* Adjust inflow/outflow card size */
+.flow-card {
+    min-height: 350px;
+    height: auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.flow-card .chart-container {
+    height: 300px;
+    width: 300px;
+    margin: 20px auto;
+    display: flex;
+    justify-content: center;
+}
+
+
+/* Ensure the doughnut chart maintains proper sizing */
+#inflow-outflow-chart {
+    max-height: 300px !important;  /* Increased from 200px */
+    max-width: 300px !important;   /* Added max-width */
+}
+
+/* Maintain comparison card layout */
 .comparison-card {
     min-height: 300px;
     height: auto;
 }
 
-.chart-container {
-    position: relative;
-    min-height: 200px;
-    width: 100%;
-}
-
-/*.scrollable-chart-container {
-    position: relative;
-    height: 350px;
-    width: 100%;
-    overflow-x: auto;
-    overflow-y: hidden;
-}
-
-.scrollable-chart-container canvas {
-    min-width: 800px;
-}*/
-
-.scrollable-chart-container::-webkit-scrollbar {
-    height: 8px;
-}
-
-.scrollable-chart-container::-webkit-scrollbar-track {
-    background: #f1f1f1;
-    border-radius: 4px;
-}
-
-.scrollable-chart-container::-webkit-scrollbar-thumb {
-    background: #888;
-    border-radius: 4px;
-}
-
-.scrollable-chart-container::-webkit-scrollbar-thumb:hover {
-    background: #555;
-}
-
-.chart-headers {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-}
-
-.chart-controls {
-    display: flex;
-    gap: 10px;
-}
-
-.chart-tab {
-    padding: 8px 16px;
-    border: none;
-    border-radius: 6px;
-    background: #f0f0f0;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.chart-tab.active {
-    background: #4a90e2;
-    color: white;
-}
-
-.metric-cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 15px;
-}
-
-.alert-metrics {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-body {
-    padding-bottom: 20px;
-    margin: 0;
-}
-
+/* Add these specific media queries for better responsive behavior */
 @media (max-width: 1200px) {
-    .dashboard-container {
-        grid-template-columns: 1fr;
-        height: auto;
-    }
-    
-    .left-panel, .right-panel {
-        height: auto;
-    }
-
-    .insights-card, 
-    .alerts-card, 
-    .intervals-card, 
-    .flow-card,
-    .transactions-card,
-    .comparison-card {
-        height: auto;
-        min-height: 200px;
-    }
-
-    .year-tabs {
-        display: flex;
-        gap: 10px;
+    .scrollable-chart-wrapper {
         margin-bottom: 20px;
     }
 
-    .year-tab {
-        padding: 8px 16px;
-        border: none;
-        border-radius: 6px;
-        background: #f0f0f0;
-        cursor: pointer;
-        transition: all 0.3s ease;
+    .transactions-card .chart-container,
+    .intervals-card .chart-container {
+        min-width: 800px; /* Slightly reduced for better mobile experience */
+    }
+    .flow-card .chart-container {
+        height: 250px;  /* Slightly smaller on mobile */
+        width: 250px;
     }
 
-    .year-tab.active {
-        background: #4a90e2;
-        color: white;
+    #inflow-outflow-chart {
+        max-height: 250px !important;
+        max-width: 250px !important;
     }
 }
+
+/* Additional color variables for gradients and effects */
+:root {
+    /* Add these to your existing variables */
+    --gradient-blue: linear-gradient(135deg, #4361ee 0%, #3a0ca3 100%);
+    --gradient-purple: linear-gradient(135deg, #7209b7 0%, #3a0ca3 100%);
+    --gradient-success: linear-gradient(135deg, #4cc9f0 0%, #4361ee 100%);
+    --gradient-warning: linear-gradient(135deg, #f72585 0%, #b5179e 100%);
+    --neon-shadow: 0 0 15px rgba(67, 97, 238, 0.3);
+    --card-shine: rgba(255, 255, 255, 0.1);
+}
+
+/* Shimmering background animation */
+.card {
+    position: relative;
+    overflow: hidden;
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        to right,
+        transparent,
+        rgba(255, 255, 255, 0.1),
+        transparent
+    );
+    transform: rotate(45deg);
+    animation: shimmer 6s infinite linear;
+    pointer-events: none;
+}
+
+@keyframes shimmer {
+    0% { transform: translateX(-100%) rotate(45deg); }
+    100% { transform: translateX(100%) rotate(45deg); }
+}
+
+/* Pulse animation for alerts */
+.alert-metric {
+    animation: pulseWarning 2s infinite;
+}
+
+@keyframes pulseWarning {
+    0% { border-left-color: var(--warning-color); }
+    50% { border-left-color: #ff8fb1; }
+    100% { border-left-color: var(--warning-color); }
+}
+
+/* Enhance metric cards with gradients */
+.metric-card {
+    background: var(--gradient-blue);
+    color: white;
+}
+
+.metric-card:nth-child(2n) {
+    background: var(--gradient-purple);
+}
+
+.metric-card:nth-child(3n) {
+    background: var(--gradient-success);
+}
+
+.metric-value {
+    color: white;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.metric-label {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* Floating animation for cards */
+.card {
+    animation: floatingCard 6s ease-in-out infinite;
+}
+
+@keyframes floatingCard {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+    100% { transform: translateY(0); }
+}
+
+/* Gradient border animation */
+.dashboard-heading {
+    position: relative;
+    background: var(--gradient-blue);
+    z-index: 1;
+}
+
+.dashboard-heading::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, 
+        #4361ee, #3a0ca3, #7209b7, #f72585, 
+        #4361ee, #3a0ca3, #7209b7, #f72585);
+    z-index: -1;
+    border-radius: 12px;
+    background-size: 400%;
+    animation: borderGradient 12s linear infinite;
+}
+
+@keyframes borderGradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Enhance chart tabs with gradient */
+.chart-tab, .year-tab {
+    background: var(--gradient-blue);
+    color: white;
+    border: none;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.chart-tab::before, .year-tab::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s;
+}
+
+.chart-tab:hover::before, .year-tab:hover::before {
+    left: 100%;
+}
+
+/* Smooth chart loading animation */
+.chart-container {
+    opacity: 0;
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Enhanced scrollbar with gradient */
+.scrollable-chart-wrapper::-webkit-scrollbar-thumb {
+    background: var(--gradient-blue);
+    border-radius: 4px;
+}
+
+/* Glowing effect for active elements */
+.chart-tab.active, .year-tab.active {
+    box-shadow: var(--neon-shadow);
+}
+
+/* Loading skeleton animation */
+.loading {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+/* Hover effect for chart containers */
+.chart-container:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--neon-shadow);
+    transition: all 0.3s ease;
+}
+
+/* Gradient text animation for headings */
+.card h3 {
+    background: var(--gradient-blue);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: gradientText 6s infinite linear;
+    background-size: 200% 100%;
+}
+
+/* Rest of the code remains exactly the same */
+@keyframes gradientText {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+/* Responsive hover effects */
+@media (hover: hover) {
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--neon-shadow);
+    }
+    
+    .metric-card:hover {
+        transform: scale(1.02);
+        box-shadow: var(--neon-shadow);
+    }
+}
+
