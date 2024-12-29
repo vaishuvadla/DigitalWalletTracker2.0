@@ -3,11 +3,16 @@
 <head>
     <title>Financial Dashboard</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='dashboard_style.css') }}">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/luxon/2.3.1/luxon.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
+    <div class="dashboard-heading">
+        <h1>DASHBOARD <span>- Transaction Analysis</span></h1>
+    </div>
+    
     <div class="dashboard-container">
         <!-- Left Panel -->
         <div class="left-panel">
@@ -33,13 +38,7 @@
                 </div>
             </div>
 
-            <!-- Cash Flow -->
-            <div class="card flow-card">
-                <h3>Cash Flow Overview</h3>
-                <div class="chart-container">
-                    <canvas id="inflow-outflow-chart"></canvas>
-                </div>
-            </div>
+            
         </div>
 
         <!-- Right Panel -->
@@ -66,7 +65,17 @@
                 <div class="year-tabs" id="yearTabs"></div>
                 <div class="chart-container" id="yearlyChartsContainer"></div>
             </div>
+
+            <!-- Cash Flow -->
+            <div class="card flow-card">
+                <h3>Cash Flow Overview</h3>
+                <div class="chart-container">
+                    <canvas id="inflow-outflow-chart"></canvas>
+                </div>
+            </div>
+
         </div>
+
     </div>
     <script src="{{ url_for('static', filename='dashboard_script.js') }}"></script>
 </body>
