@@ -1,0 +1,236 @@
+.dashboard-container {
+    display: grid;
+    grid-template-columns: minmax(350px, 38%) minmax(450px, 62%);
+    gap: 20px;
+    padding: 20px;
+    min-height: 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.left-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    min-height: 100%;
+}
+
+.right-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    min-height: 100%;
+}
+
+.card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+.flow-card {
+    min-height: 350px;
+    min-width: 350px;
+    height: 450px;
+    width: 450px;
+}
+
+.flow-card .chart-container {
+    height: 200px;
+    margin: auto;
+    width: 200px;
+}
+
+#inflow-outflow-chart {
+    max-height: 200px !important;
+}
+
+.insights-card, .alerts-card {
+    min-height: 200px;
+    height: auto;
+}
+
+.intervals-card, .flow-card {
+    min-height: 200px;
+    height: auto;
+}
+
+/*ransaction*/
+
+.transactions-card {
+    min-height: 400px;
+    height: auto;
+}
+
+
+/* Base scrollable chart style */
+.scrollable-chart-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+/* Time Interval Chart scrollable container */
+.intervals-card .scrollable-chart-wrapper {
+    min-height: 180px;
+}
+
+.intervals-card .chart-container {
+    min-width: 600px; /* Minimum width before scrolling starts */
+    height: 100%;
+}
+
+/* Transaction Chart scrollable container */
+.transactions-card .scrollable-chart-wrapper {
+    min-height: 300px;
+}
+
+.transactions-card .chart-container {
+    min-width: 800px; /* Minimum width before scrolling starts */
+    height: 100%;
+}
+
+/* Styling the scrollbars for both containers */
+.scrollable-chart-wrapper::-webkit-scrollbar {
+    height: 8px;
+}
+
+.scrollable-chart-wrapper::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+.scrollable-chart-wrapper::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+}
+
+.scrollable-chart-wrapper::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+/*============================*/
+.comparison-card {
+    min-height: 300px;
+    height: auto;
+}
+
+.chart-container {
+    position: relative;
+    min-height: 200px;
+    width: 100%;
+}
+
+/*.scrollable-chart-container {
+    position: relative;
+    height: 350px;
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+.scrollable-chart-container canvas {
+    min-width: 800px;
+}*/
+
+.scrollable-chart-container::-webkit-scrollbar {
+    height: 8px;
+}
+
+.scrollable-chart-container::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+.scrollable-chart-container::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+}
+
+.scrollable-chart-container::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+.chart-headers {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.chart-controls {
+    display: flex;
+    gap: 10px;
+}
+
+.chart-tab {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 6px;
+    background: #f0f0f0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.chart-tab.active {
+    background: #4a90e2;
+    color: white;
+}
+
+.metric-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+}
+
+.alert-metrics {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+body {
+    padding-bottom: 20px;
+    margin: 0;
+}
+
+@media (max-width: 1200px) {
+    .dashboard-container {
+        grid-template-columns: 1fr;
+        height: auto;
+    }
+    
+    .left-panel, .right-panel {
+        height: auto;
+    }
+
+    .insights-card, 
+    .alerts-card, 
+    .intervals-card, 
+    .flow-card,
+    .transactions-card,
+    .comparison-card {
+        height: auto;
+        min-height: 200px;
+    }
+
+    .year-tabs {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 20px;
+    }
+
+    .year-tab {
+        padding: 8px 16px;
+        border: none;
+        border-radius: 6px;
+        background: #f0f0f0;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .year-tab.active {
+        background: #4a90e2;
+        color: white;
+    }
+}
