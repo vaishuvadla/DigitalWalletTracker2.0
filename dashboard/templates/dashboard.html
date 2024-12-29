@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Financial Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='dashboard_style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/luxon/2.3.1/luxon.min.js"></script>
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Left Panel -->
+        <div class="left-panel">
+            <!-- Savings Insights -->
+            <div class="card insights-card">
+                <h3>Savings Opportunities</h3>
+                <div class="metric-cards" id="savings-suggestions-list"></div>
+            </div>
+
+            <!-- Spending Alerts -->
+            <div class="card alerts-card">
+                <h3>Important Alerts</h3>
+                <div class="alert-metrics" id="spending-alerts-list"></div>
+            </div>
+
+            <!-- Time Intervals -->
+            <div class="card intervals-card">
+                <h3>Peak Transaction Periods</h3>
+                <div class="scrollable-chart-wrapper">
+                    <div class="chart-container">
+                        <canvas id="timeIntervalChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cash Flow -->
+            <div class="card flow-card">
+                <h3>Cash Flow Overview</h3>
+                <div class="chart-container">
+                    <canvas id="inflow-outflow-chart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Panel -->
+        <div class="right-panel">
+            <!-- Transaction History -->
+            <div class="card transactions-card">
+                <div class="chart-headers">
+                    <h3>Transaction History</h3>
+                    <div class="chart-controls">
+                        <button class="chart-tab active" data-chart="credit">Credit</button>
+                        <button class="chart-tab" data-chart="debit">Debit</button>
+                    </div>
+                </div>
+                <div class="scrollable-chart-wrapper">  <!-- Changed from scrollable-chart-container -->
+                    <div class="chart-container">
+                        <canvas id="combined-transactions-chart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Monthly Comparison -->
+            <div class="card comparison-card">
+                <h3>Monthly Spending By Year</h3>
+                <div class="year-tabs" id="yearTabs"></div>
+                <div class="chart-container" id="yearlyChartsContainer"></div>
+            </div>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='dashboard_script.js') }}"></script>
+</body>
+</html>
