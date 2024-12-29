@@ -85,8 +85,10 @@ function createCombinedTransactionsChart(data) {
                         display: false
                     },
                     ticks: {
-                        maxRotation: 0, // Prevent label rotation
-                        minRotation: 0
+                        maxRotation: 45,    // Set rotation angle to 45 degrees
+                        minRotation: 45,    // Ensure minimum rotation is also 45 degrees
+                        autoSkip: false,    // Prevent automatic skipping of labels
+                        padding: 10         // Add some padding
                     }
                 },
                 y: {
@@ -97,6 +99,11 @@ function createCombinedTransactionsChart(data) {
                 tooltip: {
                     mode: 'index',
                     intersect: false
+                }
+            },
+            layout: {
+                padding: {
+                    bottom: 25  // Add bottom padding to accommodate rotated labels
                 }
             }
         }
